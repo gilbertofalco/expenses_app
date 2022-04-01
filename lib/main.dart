@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import './transaction.dart';
+import 'models/transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -36,6 +36,12 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
+  // String titleInput;
+  // String amountInput;
+
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,10 +64,12 @@ class MyHomePage extends StatelessWidget {
           Card(
             elevation: 5,
             child: Container(
-              padding: EdgeInsets.all(5),
+              padding: EdgeInsets.all(10),
               child: Column(
                 children: [
                   TextField(
+                    controller: titleController,
+                    style: TextStyle(color: Colors.black),
                     cursorColor: Colors.red,
                     decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
@@ -71,30 +79,48 @@ class MyHomePage extends StatelessWidget {
                         borderSide: BorderSide(color: Colors.red),
                       ),
                       labelText: "Title",
-                      labelStyle: TextStyle(color: Colors.red),
+                      labelStyle: TextStyle(
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                   TextField(
+                    controller: amountController,
+                    // onChanged: (val) {
+                    //   titleInput = val;
+                    // },
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                     cursorColor: Colors.red,
                     decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
+                        borderSide: BorderSide(
+                          color: Colors.red,
+                        ),
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
+                        borderSide: BorderSide(
+                          color: Colors.red,
+                        ),
                       ),
                       labelText: "Amount",
-                      labelStyle: TextStyle(color: Colors.red),
+                      labelStyle: TextStyle(
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.only(top: 10),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print(titleController.text);
+                        print(amountController.text);
+                      },
                       child: Text(
                         "Add Transaction",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.red,
                         ),
                       ),
                       style: TextButton.styleFrom(
